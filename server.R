@@ -2,13 +2,18 @@ library(shiny)
 library(rgdal)
 library(rwunderground)
 library(sp)
+library(shinyjs)
 
 server <- function(input, output)
 {
 
 
+#output$miasto <- forecast3day(set_location(territory="Poland", city = input$miasto))
 output$data1 <- renderText(input$data1)
 output$color <- renderText(input$color)
+output$info <- renderText({
+    paste0("x=", input$mapa_click$x, "\ny=", input$mapa_click$y)
+  })
 output$mapa<-renderPlot({
 poland.map <- readOGR(dsn="C:/Users/Damian/Desktop/NPR/NPR/wojewodztwa","wojewodztwa") 
 class(poland.map)
