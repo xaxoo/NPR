@@ -5,7 +5,7 @@ library(sp)
 
 server <- function(input, output)
 {
-output$mojanazwa <- renderText(input$nazwa)
+output$mojanazwamiasta <- renderText(input$nazwamiasta)
 output$mapa<-renderPlot({
 poland.map <- readOGR(dsn="C:/Users/Damian/Desktop/NPR/NPR/wojewodztwa","wojewodztwa") 
 class(poland.map)

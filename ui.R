@@ -4,12 +4,14 @@ library(rwunderground)
 library(sp)
 
 ui <- fluidPage(
-titlePanel("Pogoda dla Ciebie!"),
+headerPanel(title = "Pogoda dla Ciebie!"),
 #Main panel for displaying outputs
  sidebarLayout(
- sidebarPanel(("Wybierz miejscowosc"), textInput("nazwa", "Podaj nazwe miejscowosci", ""))
-# mainPanel(
+ sidebarPanel(("Wybierz miejscowosc"), textInput("nazwamiasta", "Podaj nazwe miejscowosci", "")),
+ textOutput("mojanazwamiasta")
+ ),
+mainPanel(
 #Output: Mapa Polski
-plotOutput(outputId = "mapa", width = "1280px", height ="720px"),
-textOutput("mojanazwa"))
-))
+plotOutput(outputId = "mapa", width = "1280px", height ="720px")
+)
+)
