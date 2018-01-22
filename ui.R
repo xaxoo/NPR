@@ -7,7 +7,14 @@ ui <- fluidPage(
 headerPanel(title = "Pogoda dla Ciebie!"),
 #Main panel for displaying outputs
  sidebarLayout(
- sidebarPanel(("Wybierz miejscowosc"), textInput("nazwamiasta", "Podaj nazwe miejscowosci", "")),
+ sidebarPanel(
+				selectInput(inputId = "data1", label = "Wybierz wojewodztwo", choices = c("opolskie", "świętokrzyskie", "kujawsko-pomorskie",
+                            "mazowieckie", "pomorskie", "śląskie",
+                           "warmińsko-mazurskie", "zachodniopomorskie",
+                             "dolnośląskie", "wielkopolskie", "łódzkie",
+                           "podlaskie", "małopolskie", "lubuskie",
+                             "podkarpackie", "lubelskie"))
+ ),
  textOutput("mojanazwamiasta")
  ),
 mainPanel(
