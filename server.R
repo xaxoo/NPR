@@ -7,8 +7,8 @@ server <- function(input, output)
 {
 
 
-
-
+output$data1 <- renderText(input$data1)
+output$color <- renderText(input$color)
 output$mapa<-renderPlot({
 poland.map <- readOGR(dsn="C:/Users/Damian/Desktop/NPR/NPR/wojewodztwa","wojewodztwa") 
 class(poland.map)
@@ -21,4 +21,5 @@ poland.map@data$nazwa <- c("opolskie", "świętokrzyskie", "kujawsko-pomorskie",
                            "podlaskie", "małopolskie", "lubuskie",
                              "podkarpackie", "lubelskie")
 plot(poland.map)
+plot(poland.map[poland.map$nazwa == input$data1, ], col = input$color, add = TRUE)
 })}
