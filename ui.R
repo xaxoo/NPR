@@ -24,6 +24,7 @@ mainPanel(
 #Output: Mapa Polski
 textOutput("data1"),
 textOutput("miasto"),
+textOutput("data2"),
 plotOutput(outputId = "mapa",click = "mapa_click", width = "1280px", height ="720px"),
 verbatimTextOutput("info")
 )
