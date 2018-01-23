@@ -16,9 +16,9 @@ headerPanel(title = "Pogoda dla Ciebie!"),
                            "podlaskie", "małopolskie", "lubuskie",
                              "podkarpackie", "lubelskie"), selected="kujawsko-pomorskie", selectize = FALSE),
 				selectInput("color","Wybierz Kolor",c("Blue", "Green", "Red"), selected="Blue", selectize = FALSE),
-			    #selectInput("miasto", "Miasto", c("Bydgoszcz", "Gdansk", "Warszawa"), selected="Warszawa", selectize = FALSE)
+			    selectInput("miasto", "Miasto", c("Bydgoszcz", "Gdansk", "Warszawa"), selected="Warszawa", selectize = FALSE)
  ),
- #textOutput("mojanazwamiasta")
+ textOutput("mojanazwamiasta"),
  ),
 mainPanel(
 #Output: Mapa Polski
