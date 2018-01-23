@@ -8,8 +8,8 @@ server <- function(input, output)
 {
 
 cor <- read.csv("Coord.csv")
-coords <- data.frame(cor$xMin, cor$xMax, cor$yMin, cor$yMax)
-data <- data.frame(cor$nazwa)
+coords <- data.frame(cor$xMin, cor$xMax, cor$yMin, cor$yMax, cor$nazwa)
+#data <- data.frame(cor$nazwa)
 
 x <- c(1,16)
 
@@ -32,28 +32,24 @@ poland.map@data$nazwa <- c("opolskie", "świętokrzyskie", "kujawsko-pomorskie",
                            "podlaskie", "małopolskie", "lubuskie",
                              "podkarpackie", "lubelskie")
 plot(poland.map)
+#plot(poland.map[poland.map$nazwa == coords[1,5], ], col = input$color, add = TRUE)
 
+if(!is.null(input$mapa_click)){
 for(i in x){
-			if( !is.null(input$mapa_click$x) & !is.null(input$mapa_click$y))
-			{
-			if( input$mapa_click$x > coords[i,1])
+			
+			if( input$mapa_click$x > coords[i,1] & input$mapa_click$x < coords[i,2] & input$mapa_click$y > coords[i,3] & input$mapa_click$y < coords[i,4])
 					{
-						if( input$mapa_click$x < coords[i,2] )
-							{
-								if( input$mapa_click$y > coords[i,3])
-								{
-									if( input$mapa_click$y < coords[i,4])
-										{
-											output$data2 <- renderText(data[i,1])
+						
+											plot(poland.map[poland.map$nazwa == coords[i,5], ], col = input$color, add = TRUE)
 											
 											}
 											}
-											}
-											}
-											}
+											
+											
+											
 			}
 
 #plot(poland.map[poland.map$nazwa == input$data1, ], col = input$color, add = TRUE)
-plot(poland.map[poland.map$nazwa == input$data2, ], col = "Blue", add = TRUE)
+#plot(poland.map[poland.map$nazwa == input$data2, ], col = "Blue", add = TRUE)
 
 })}
