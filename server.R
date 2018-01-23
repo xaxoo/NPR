@@ -15,7 +15,7 @@ output$info <- renderText({
     paste0("x=", input$mapa_click$x, "\ny=", input$mapa_click$y)
   })
 output$mapa<-renderPlot({
-poland.map <- readOGR(dsn="C:/Users/Damian/Desktop/NPR/NPR/wojewodztwa","wojewodztwa") 
+poland.map <- readOGR(dsn="wojewodztwa","wojewodztwa") 
 class(poland.map)
 poland.map@data <- poland.map@data[ , c(6,16)]                                                      
 names(poland.map@data) <- c("nazwa", "powierzchnia")
