@@ -11,11 +11,11 @@ ui <- fluidPage(
 	h6(helpText("Pamietaj, że dane podane są z przybliżeniem")),
 	selectInput("plec",
 		label = "Wybierz płeć",
-		choices = c("Mężczyzna" = 5,
-				"Kobieta" = -161),
+		choices = c("Mężczyzna" = "M",
+				"Kobieta" = "K"),
 		selected = "Mężczyzna"),
 	numericInput("wiek", label = "Podaj wiek",
-		NULL,min = 5, max = 100),
+		20,min = 5, max = 100),
 	numericInput("waga",
 		label = "Podaj wage",
 		70, min = 1, max = 200),
@@ -27,12 +27,15 @@ ui <- fluidPage(
 		label = "Uprawiasz jakiś sport ?",
 		choices =c("Tak",
 				"Nie"),
-		selected = "Nie")
+		selected = "Nie"),
+	actionButton("oblicz","Oblicz")
 	
 	
 	
 	
 	),
-	mainPanel(textOutput("l"))
+	mainPanel(textOutput("m"),
+	          tableOutput("l")
+	           )
 )
 )
