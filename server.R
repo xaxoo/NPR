@@ -13,7 +13,12 @@ TEA <- function(czas,dni,intens)
   tea <-  ( czas * dni * intens ) / 7
   return(tea)
 }
-
+TDEE <- function()
+{
+  tdee <- wyliczBmr(isolate(value$waga),isolate(value$wzrost),isolate(value$wiek),isolate(value$plec)) + TEA(czas,dni,wartosc) + typ_sylwetki
+  tdee <- tdee + (0.1 * tdee)
+  return(tdee)
+}
 
 server <- function(input, output,session)
 {
@@ -50,8 +55,13 @@ server <- function(input, output,session)
   typ_treningu <-reactive({typ <- switch(input$trening,
     sila = 1,
     aero = 0)})
-  wartoscSlider <-reactive(wartosc <-(input$inten))
+
+  wartoscSlider <-reactive({wartosc <-input$inten})
+  wartoscSliderCzas <- reactive({wartosc <-input$czas})
+  wartoscSliderDni <- reactive({wartosc <- input$dni})
+
   flaga <<- 0
+  
   observe({
     cwiczy <- czy_cwiczy()
     if(cwiczy == 1){
@@ -59,18 +69,22 @@ server <- function(input, output,session)
       t_trening <- typ_treningu()
       if(t_trening == 0 ){
         if(flaga == 1 )
-        updateSliderInput(session, "inten",max=10,min=5,value=7,step=1)
+        updateSliderInput(session, "inten",max=10,min=5,value=NULL,step=1)
         flaga <<- 0
       }
       else{
         if(flaga == 0 )
-        updateSliderInput(session, "inten",max=9,min=7,value=8,step=1)
+        updateSliderInput(session, "inten",max=9,min=7,value=NULL,step=1)
         flaga <<- 1
       }
-      wartosc <- wartoscSlider()
       shinyjs::show("inten",anim = TRUE, animType ="slide",time =0.5)
       shinyjs::show("czas",anim = TRUE, animType ="slide",time =0.5)
       shinyjs::show("dni",anim = TRUE, animType ="slide",time =0.5)
+      wartosc <<- wartoscSlider()
+      czas <<- wartoscSliderCzas()
+      dni <<-wartoscSliderDni()
+      tea <<- TEA(czas,dni,wartosc)
+
     }
       else{
       shinyjs::hide("trening",anim = TRUE, animType ="slide",time =0.5)
@@ -78,8 +92,9 @@ server <- function(input, output,session)
       shinyjs::hide("czas",anim = TRUE, animType ="slide",time =0.5)
       shinyjs::hide("dni",anim = TRUE, animType ="slide",time =0.5)
     }
-    typ <- typ_zwracany()
-    observeEvent(input$oblicz,{output$m <-renderText({wyliczBmr(isolate(value$waga),isolate(value$wzrost),isolate(value$wiek),isolate(value$plec)) + typ})})
+    
+    typ_sylwetki <<- typ_zwracany()
+    observeEvent(input$oblicz,{output$m <-renderText({TDEE()})})
     output$l <- renderTable({
     sliderValues()
   })
