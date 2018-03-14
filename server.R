@@ -19,13 +19,30 @@ TDEE <- function()
   tdee <- tdee + (0.1 * tdee)
   return(tdee)
 }
-
-server <- function(input, output,session)
+disHide <-function()
+{
+      shinyjs::hide("trening",anim = TRUE, animType ="slide",time =0.5)
+      shinyjs::hide("inten",anim = TRUE, animType ="slide",time =0.5)
+      shinyjs::hide("czas",anim = TRUE, animType ="slide",time =0.5)
+      shinyjs::hide("dni",anim = TRUE, animType ="slide",time =0.5)
+}
+HideInit <-function()
 {
   shinyjs::hide("czas")
   shinyjs::hide("dni")
   shinyjs::hide("trening")
   shinyjs::hide("inten")
+}
+disShow <-function()
+{
+      shinyjs::show("inten",anim = TRUE, animType ="slide",time =0.5)
+      shinyjs::show("czas",anim = TRUE, animType ="slide",time =0.5)
+      shinyjs::show("dni",anim = TRUE, animType ="slide",time =0.5)
+}
+
+server <- function(input, output,session)
+{
+  HideInit()
   options(encoding = 'UTF-8')
 	options(digits = 5)
   
@@ -77,21 +94,14 @@ server <- function(input, output,session)
         updateSliderInput(session, "inten",max=9,min=7,value=NULL,step=1)
         flaga <<- 1
       }
-      shinyjs::show("inten",anim = TRUE, animType ="slide",time =0.5)
-      shinyjs::show("czas",anim = TRUE, animType ="slide",time =0.5)
-      shinyjs::show("dni",anim = TRUE, animType ="slide",time =0.5)
+      disShow()
       wartosc <<- wartoscSlider()
       czas <<- wartoscSliderCzas()
       dni <<-wartoscSliderDni()
-      tea <<- TEA(czas,dni,wartosc)
 
     }
-      else{
-      shinyjs::hide("trening",anim = TRUE, animType ="slide",time =0.5)
-      shinyjs::hide("inten",anim = TRUE, animType ="slide",time =0.5)
-      shinyjs::hide("czas",anim = TRUE, animType ="slide",time =0.5)
-      shinyjs::hide("dni",anim = TRUE, animType ="slide",time =0.5)
-    }
+      else
+        disHide()
     
     typ_sylwetki <<- typ_zwracany()
     observeEvent(input$oblicz,{output$m <-renderText({TDEE()})})

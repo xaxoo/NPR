@@ -35,8 +35,8 @@ ui <- fluidPage(
 			"Aerobowy" = "aero"))),
 	div(style="display: inline-block; vertical-align:top; width: 150px;", sliderInput("inten","Intesywność treningu: ",min =7,max=9,value =NULL,step=1)),
 	hr(),
-	div(style="display: inline-block; vertical-align:top; width: 300px;", sliderInput("czas","Czas treningu w minutach",min =0,max=200,value =0,step=1)),
-	div(style="display: inline-block; vertical-align:top; width: 200px;", sliderInput("dni","Ile dni w tygodniu",min =0,max=7,value =0,step=1)),
+	div(style="display: inline-block; vertical-align:top; width: 70%;", sliderInput("czas","Czas treningu w minutach",min =0,max=200,value =0,step=1)),
+	div(style="display: inline-block; vertical-align:top; width: 30%;", sliderInput("dni","Ile dni w tygodniu",min =0,max=7,value =0,step=1)),
 	hr(),
 	div(style="display: inline-block; vertical-align:top; width: 150px;",actionButton("oblicz","Oblicz"))
 	
