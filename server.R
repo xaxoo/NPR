@@ -24,7 +24,7 @@ CM <- function(waga)
 {
 	prot <- 2*waga
 	fat <- (0.25*TDEE())/9
-	hyd <- TDEE() - prot - fat
+	hyd <- (TDEE() - prot*4 - fat*9)/4
 	sum <- c(prot,fat,hyd)
 	return(sum)
 	
@@ -33,10 +33,10 @@ CMREDUCTION <- function(waga)
 {
 	prot <- 2.2*waga
 	fat <- (0.20*TDEE())/9
-	hyd <- TDEE() - prot - fat
+	hyd <- (TDEE() - prot*4 - fat*9)/4
 	sum <- c(prot,fat,hyd)
 	return(sum)
-	
+}	
 
 disHide <-function()
 {
