@@ -48,6 +48,7 @@ ui <- fluidPage(
 	mainPanel(
 		useShinyjs(),
 		textOutput("m"),
+		plotOutput(outputId = "distPlot"),
 	   	tableOutput("l")
 	    )
 	)

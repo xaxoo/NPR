@@ -105,9 +105,17 @@ server <- function(input, output,session)
     
     typ_sylwetki <<- typ_zwracany()
     observeEvent(input$oblicz,{output$m <-renderText({TDEE()})})
+    observeEvent(input$oblicz,{output$distPlot <- renderPlot({
+      y <- c(TDEE() - 300,TDEE(),TDEE()+300)
+             
+      hist(y, breaks = 3, col = "#75AADB", border = "white",
+         xlab = "Cel",
+         ylab ="KCAL",
+         main = "Histogram zapotrzebowania kalorycznego")})})
     output$l <- renderTable({
     sliderValues()
   })
+
     })
   
   
