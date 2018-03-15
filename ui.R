@@ -1,7 +1,9 @@
 library(shiny)
 library(shinyjs)
 
-ui <- fluidPage(
+ui <- navbarPage("Bądź fit!",
+	tabPanel("Kalkulator",
+		fluidPage(
 	includeCSS("style.css"),
 	
 	headerPanel(title = "Kalkulator kalorii"),
@@ -52,4 +54,6 @@ ui <- fluidPage(
 	   	tableOutput("l")
 	    )
 	)
-)
+)	
+		),
+tabPanel("Makroskładniki"))
