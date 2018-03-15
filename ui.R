@@ -56,4 +56,16 @@ ui <- navbarPage("Bądź fit!",
 	)
 )	
 		),
-tabPanel("Makroskładniki"))
+tabPanel("Makroskładniki"),
+	fluidPage(
+		includeCSS("style.css"),
+		headerPanel(title="Makroskładniki"),
+		sidebarLayout(
+			sidebarPanel(
+			helpText("Podane wartości w %"),
+			sliderInput("bialko","Białko:",min =0,max=100,value=0,step =1),
+			sliderInput("wegle","Węglowodany:",min =0,max =100,value=0,step =1),
+			sliderInput("tluszcze","Tłuszcze:",min=0,max=100,value=0,step=1))
+		
+
+		, mainPanel())))
