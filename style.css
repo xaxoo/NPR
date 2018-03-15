@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Mina');
+
+
+h1 {
+	font-family: 'Mina', sans-serif;
+	text-align: center;
+	box-sizing: border-box;
+
+}
+body {
+	background-color:#DCF3FA;
+	font-family: 'Mina', sans-serif;
+}
+#l
+{
+	
+	float: right;
+}

@@ -2,6 +2,7 @@ library(shiny)
 library(shinyjs)
 
 ui <- fluidPage(
+	includeCSS("style.css"),
 	
 	headerPanel(title = "Kalkulator kalorii"),
 	#Main panel for displaying outputs
