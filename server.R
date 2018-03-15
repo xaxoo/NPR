@@ -136,6 +136,14 @@ server <- function(input, output,session)
   })
 
     })
+  val_slider <-reactive({val<-input$bialko})
+  
+
+  observe({val<-input$bialko
+    
+    if(val > 30)
+    updateSliderInput(session,"tluszcze",min=0,value=val,max=100,step=1)
+    })
   
   
   

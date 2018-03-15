@@ -64,9 +64,9 @@ tabPanel("Makroskładniki",
 		sidebarLayout(
 			sidebarPanel(
 			helpText("Podane wartości w %"),
-			sliderInput("bialko","Białko:",min =0,max=100,value=0,step =1),
-			sliderInput("wegle","Węglowodany:",min =0,max =100,value=0,step =1),
-			sliderInput("tluszcze","Tłuszcze:",min=0,max=100,value=0,step=1),
+			sliderInput("bialko","Białko:",min =0,max=100,value=30,step =1),
+			sliderInput("wegle","Węglowodany:",min =0,max =100,value=50,step =1),
+			sliderInput("tluszcze","Tłuszcze:",min=0,max=100,value=20,step=1),
 			radioButtons("cel","Twój cel:",
 				c("Masa" = "masa",
 				"Redukcja" ="redu"))
