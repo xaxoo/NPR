@@ -66,8 +66,14 @@ tabPanel("Makroskładniki",
 			helpText("Podane wartości w %"),
 			sliderInput("bialko","Białko:",min =0,max=100,value=0,step =1),
 			sliderInput("wegle","Węglowodany:",min =0,max =100,value=0,step =1),
-			sliderInput("tluszcze","Tłuszcze:",min=0,max=100,value=0,step=1)),
-			mainPanel()
+			sliderInput("tluszcze","Tłuszcze:",min=0,max=100,value=0,step=1),
+			radioButtons("cel","Twój cel:",
+				c("Masa" = "masa",
+				"Redukcja" ="redu"))
+			),
+			mainPanel(
+				plotOutput(outputId = "pie")
+				)
 			)
 		)
 	)
