@@ -108,7 +108,7 @@ server <- function(input, output,session)
     observeEvent(input$oblicz,{output$distPlot <- renderPlot({
       y <- c(TDEE() - 300,TDEE(),TDEE()+300)
              
-      hist(y, breaks = 3, col = "#75AADB", border = "white",
+      hist(y, breaks = 3, col = "#99CCCC", border = "white",
          xlab = "Cel",
          ylab ="KCAL",
          main = "Histogram zapotrzebowania kalorycznego")})})
