@@ -19,6 +19,17 @@ TDEE <- function()
   tdee <- tdee + (0.1 * tdee)
   return(tdee)
 }
+
+CM <- function(waga)
+{
+	prot <- 2*waga
+	fat <- (0.25*TDEE())/9
+	hyd <- TDEE() - prot - fat
+	sum <- c(prot,fat,hyd)
+	return(sum)
+	
+}
+
 disHide <-function()
 {
       shinyjs::hide("trening",anim = TRUE, animType ="slide",time =0.5)
